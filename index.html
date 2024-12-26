@@ -20,6 +20,8 @@
   <!-- Core CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <!-- Tailwind Config -->
   <script>
     tailwind.config = {
@@ -2508,7 +2510,7 @@
             <div
               class="border border-white/10 rounded-xl p-6 bg-gray-100 dark:bg-neutral-800/50 backdrop-blur-lg  hover:bg-gray-200 dark:hover:bg-neutral-700/50 transition-all duration-300">
               <h3 class="text-xl font-bold mb-6">Send a Message</h3>
-              <form class="space-y-4">
+              <form class="space-y-4" id="contact-form">
                 <div>
                   <label for="name" class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Name</label>
                   <input type="text" id="name"
@@ -2526,7 +2528,7 @@
                   <textarea id="message" rows="4"
                     class="w-full bg-neutral-600/20 dark:bg-neutral-700/50 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500"></textarea>
                 </div>
-                <button type="submit"
+                <button type="submit" id="submit-button"
                   class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
                   Send Message
                 </button>
@@ -2720,6 +2722,73 @@
       }
     });
 
+  </script>
+
+
+  <!-- Contact form response -->
+  <script>
+    // Initialize EmailJS with your user ID
+    emailjs.init({
+      publicKey: 'nrWFut7QzlcvIvCLZ',
+    });
+
+    // Handle form submission
+    document.getElementById("contact-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Disable submit button and change text
+      const submitButton = document.getElementById("submit-button");
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+
+      // Get form field values
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      // Simple validation
+      if (!name || !email || !message) {
+        alert("Please fill in all fields.");
+        submitButton.disabled = false;
+        submitButton.textContent = "Send Message";
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        alert("Please enter a valid email address.");
+        submitButton.disabled = false;
+        submitButton.textContent = "Send Message";
+        return;
+      }
+
+      // Send email using EmailJS
+      const templateParams = {
+        from_name: name,
+        email: email,
+        message: message
+      };
+
+      emailjs.send("service_marsas", "template_marsas", templateParams)
+        .then(function (response) {
+          console.log("SUCCESS!", response);
+          alert("Message sent successfully!");
+          document.getElementById("contact-form").reset(); // Reset form
+        }, function (error) {
+          console.log("FAILED...", error);
+          alert("Failed to send the message. Please try again.");
+        })
+        .finally(function () {
+          // Re-enable the submit button and reset the text
+          submitButton.disabled = false;
+          submitButton.textContent = "Send Message";
+        });
+    });
+
+    // Validate email format
+    function validateEmail(email) {
+      const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      return regex.test(email);
+    }
   </script>
 
 </body>
