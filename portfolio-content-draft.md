@@ -229,7 +229,7 @@ Languages and tools I've used across work and personal projects.
 
 **Languages**
 
-C++ & C / Java / JavaScript / TypeScript / Python
+C++ & C / Java / Kotlin / JavaScript / TypeScript / Python
 
 **Frontend & mobile**
 

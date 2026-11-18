@@ -589,6 +589,8 @@ html[data-motion="paused"] .hero-title > span, .hero:has(:focus-visible) .hero-t
 @media (max-width: 767px) {
   html { --header-height: 5rem; }
   .story-scene > svg { width: 115%; margin-left: -5%; height: min(60svh, 32rem); }
+  [data-scene="skills"] .story-scene { mask-image: none; }
+  [data-scene="skills"] .story-scene > svg { position: absolute; top: 1rem; right: .5rem; width: min(8rem, 32%); height: 5rem; margin-left: 0; }
   .intro-pinned :is([data-scene="intro"], [data-scene="projects"]) .story-scene > svg { right: -10%; }
   [data-scene="about"] .story-scene > svg, [data-scene="experience"] .story-scene > svg { top: calc(var(--header-height) + 1rem); width: 115%; margin-left: -5%; }
   .scene-depth { opacity: .1; }

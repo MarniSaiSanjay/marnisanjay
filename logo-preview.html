@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Logo studies | Marni Sai Sanjay</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(location.search).get("scoutTheme");
+      const theme = ["light", "dark"].includes(param)
+        ? param
+        : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font: 1rem/1.6 "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-underline-offset: .25em; }
+    button, input { font: inherit; }
+    button, label { -webkit-tap-highlight-color: var(--cp-highlight); }
+    button, input, label { cursor: pointer; }
+    button { color: inherit; }
+    :focus-visible { outline: 2px solid var(--cp-accent); outline-offset: 5px; }
+    ::selection { background: var(--cp-accent); color: var(--cp-accent-fg); }
+    h1, h2, p { margin: 0; }
+    svg { display: block; flex-shrink: 0; }
+    .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+    .wrap { width: min(1184px, calc(100% - 64px)); margin-inline: auto; }
+    .mono { font-family: Consolas, "Courier New", Courier, monospace; }
+    .eyebrow { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--cp-text-muted); }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 24px; border-bottom: 1px solid var(--cp-border); }
+    .topbar a { font-size: .875rem; }
+    .intro { display: grid; grid-template-columns: 1fr 19rem; align-items: end; gap: 32px; padding-block: 48px 32px; }
+    h1 { max-width: 16ch; font-size: clamp(2.5rem, 5vw, 4.25rem); font-weight: 500; line-height: 1.06; letter-spacing: -.06em; text-wrap: balance; }
+    .intro p { color: var(--cp-text-muted); font-size: .9375rem; }
+    .tools { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 24px; }
+    .tools > p { font-size: .875rem; color: var(--cp-text-muted); }
+    .toggles { display: flex; flex-wrap: wrap; gap: 8px; }
+    .toggle { min-height: 44px; padding: 8px 16px; border: 1px solid var(--cp-border-strong); border-radius: .625rem; background: var(--cp-bg-elevated); }
+    .toggle[aria-pressed="true"] { border-color: var(--cp-accent); background: var(--cp-accent-soft); color: var(--cp-accent); }
+    .stage { position: sticky; top: 0; z-index: 2; padding-block: 12px 20px; background: var(--cp-bg); }
+    .stage-caption { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; margin-bottom: 12px; }
+    .stage-caption p { font-size: .8125rem; color: var(--cp-text-muted); }
+    #selection { color: var(--cp-text); }
+    .portfolio-context {
+      --cp-bg: #f2f4f7;
+      --cp-bg-elevated: #ffffff;
+      --cp-surface: #ffffff;
+      --cp-text: #16191f;
+      --cp-text-muted: #485568;
+      --cp-accent: #2d4fc5;
+      --cp-accent-fg: #ffffff;
+      --cp-border: #cbd3df;
+      color: var(--cp-text);
+    }
+    html[data-theme="dark"] .portfolio-context {
+      --cp-bg: #11151d;
+      --cp-bg-elevated: #181e29;
+      --cp-surface: #202735;
+      --cp-text: #e8edf5;
+      --cp-text-muted: #aab5c7;
+      --cp-accent: #8fa6ff;
+      --cp-accent-fg: #11151d;
+      --cp-border: #354156;
+    }
+    html[data-ink="mono"] .portfolio-context { --cp-accent: var(--cp-text); }
+    .header-proof { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 88px; padding: 16px 24px; border: 1px solid var(--cp-border); border-radius: .625rem; background: var(--cp-bg); }
+    .proof-brand { display: inline-flex; align-items: center; gap: 16px; text-decoration: none; min-height: 44px; }
+    .header-mark { width: 54px; height: 48px; }
+    .proof-name { display: grid; gap: 4px; padding-left: 16px; border-left: 1px solid var(--cp-border); font-size: .875rem; font-weight: 500; line-height: 1.2; }
+    .proof-role { font: .625rem/1.4 Consolas, "Courier New", Courier, monospace; text-transform: uppercase; letter-spacing: .065em; color: var(--cp-text-muted); }
+    .proof-links { display: flex; gap: 24px; align-items: center; font-size: .875rem; }
+    .proof-links a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+    .proof-links .contact { padding: 8px 16px; border-radius: .5rem; background: var(--cp-accent); color: var(--cp-accent-fg); }
+    .concepts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; min-width: 0; padding: 12px 0 0; margin: 0; border: 0; }
+    .concepts legend { padding: 12px 0 4px; font-size: 1.125rem; font-weight: 500; }
+    .concept { position: relative; display: flex; min-width: 0; flex-direction: column; border: 1px solid var(--cp-border); border-radius: 16px; overflow: hidden; background: var(--cp-bg-elevated); }
+    .concept:has(input:checked) { border-color: var(--cp-accent); box-shadow: inset 0 0 0 1px var(--cp-accent); }
+    .concept:has(input:focus-visible) { outline: 2px solid var(--cp-accent); outline-offset: 5px; }
+    .concept input { position: absolute; top: 24px; right: 24px; width: 20px; height: 20px; margin: 0; accent-color: var(--cp-accent); }
+    .concept-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 24px 60px 20px 24px; }
+    .concept-number { font-size: .8125rem; color: var(--cp-text-muted); }
+    .concept-note { font-size: .75rem; color: var(--cp-text-muted); }
+    .art { display: grid; place-items: center; min-height: 224px; margin-inline: 24px; padding: 24px; border: 1px solid var(--cp-border); border-radius: .625rem; background: var(--cp-surface); }
+    .large-mark { width: 180px; height: 160px; max-width: 100%; }
+    .mark { color: var(--cp-text); }
+    .accent-dot { fill: var(--cp-accent); }
+    .line-mark { fill: none; stroke: var(--cp-text); stroke-width: 7.5; stroke-linecap: round; stroke-linejoin: round; }
+    .concept-copy { display: block; padding: 24px; }
+    .concept-name { display: block; margin-bottom: 8px; font-size: 1.375rem; font-weight: 500; letter-spacing: -.025em; }
+    .concept-description { display: block; min-height: 3.2em; font-size: .9375rem; color: var(--cp-text-muted); }
+    .sizes { display: flex; gap: 24px; align-items: end; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--cp-border); }
+    .size { display: grid; justify-items: center; align-content: end; gap: 8px; min-width: 40px; }
+    .size-label { color: var(--cp-text-muted); font: .6875rem/1.4 Consolas, "Courier New", Courier, monospace; }
+    .size .mark { background: var(--cp-bg-elevated); }
+    .afterword { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 32px; padding-block: 24px 48px; border-top: 1px solid var(--cp-border); font-size: .875rem; color: var(--cp-text-muted); }
+    .afterword p { max-width: 58ch; }
+    .afterword strong { color: var(--cp-text); font-weight: 500; }
+    noscript p { padding: 16px; margin-bottom: 20px; border: 1px solid var(--cp-border); border-radius: .625rem; }
+    @media (max-width: 900px) {
+      .intro { grid-template-columns: 1fr; gap: 20px; }
+      .intro p { max-width: 52ch; }
+      .proof-links { gap: 16px; }
+      .proof-links .secondary { display: none; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: calc(100% - 32px); }
+      .topbar { align-items: start; padding-block: 20px; }
+      .topbar .eyebrow { max-width: 14ch; }
+      .topbar a { font-size: .8125rem; }
+      .intro { padding-block: 32px 24px; }
+      .tools { gap: 12px; padding-bottom: 12px; }
+      .tools > p { flex-basis: 100%; }
+      .stage { padding-block: 12px 16px; }
+      .stage-caption { gap: 4px 12px; }
+      .stage-caption .eyebrow { font-size: .6875rem; }
+      .header-proof { min-height: 80px; padding: 12px 16px; }
+      .proof-links { display: none; }
+      .proof-brand { gap: 12px; }
+      .proof-name { padding-left: 12px; font-size: .8125rem; }
+      .proof-role { font-size: .5625rem; }
+      .concepts { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+      .art { margin-inline: 20px; }
+      .concept-copy { padding: 20px; }
+      .concept-meta { padding-left: 20px; }
+      .concept-description { min-height: 0; }
+      .afterword { margin-top: 24px; }
+    }
+    @media (max-height: 600px) {
+      .stage { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="logo-interlocked" viewBox="0 0 144 128">
+        <path fill="currentColor" d="M9 99v-4h8V30H9v-4h23l22 49 21-49h19v4h-8v65h8v4H64v-4h8V39L47 97h-4L22 49v46h10v4Z"/>
+        <path fill="currentColor" d="M113 28c-10-10-27-13-39-5-12 7-16 19-9 30 5 8 15 12 25 16 13 5 19 10 16 19-3 10-17 13-27 8-8-4-12-10-14-20h-5v28h5l4-7c11 10 28 12 41 4 14-8 18-22 11-33-5-9-17-13-28-18-11-4-17-9-14-17 3-9 15-12 24-7 7 4 11 10 13 19h5V21h-5Z"/>
+        <circle class="accent-dot" cx="133" cy="99" r="5.5"/>
+      </symbol>
+      <clipPath id="hidden-s-cut">
+        <path clip-rule="evenodd" d="M0 0h144v128H0ZM98 42c-10-8-26-8-36 0-13 11-4 23 12 28l7 2c9 3 10 8 3 12-8 5-18 2-25-3l-7 9c11 9 27 11 39 3 16-10 10-25-7-31l-8-3c-9-3-11-7-5-11 5-3 14-2 20 3Z"/>
+      </clipPath>
+      <symbol id="logo-hidden" viewBox="0 0 144 128">
+        <path fill="currentColor" clip-path="url(#hidden-s-cut)" d="M20 105V24h25l27 34 27-34h25v81H99V64L72 96 45 64v41Z"/>
+      </symbol>
+      <symbol id="logo-continuous" viewBox="0 0 144 128">
+        <path class="line-mark" d="M21 98V30l27 43 27-43v68c0 14 43 12 43-9 0-13-14-17-25-22-15-6-18-13-14-24 6-19 35-18 43-4"/>
+        <circle class="accent-dot" cx="122" cy="39" r="4.25"/>
+      </symbol>
+      <symbol id="logo-signature" viewBox="0 0 144 128">
+        <g transform="translate(7 5) scale(.86)">
+          <path fill="currentColor" d="M105 29C94 17 75 13 59 19 40 25 31 39 34 54c3 15 19 21 35 26 17 5 27 11 24 22-3 11-20 15-34 10-13-4-19-13-22-26h-6v32h6l5-8c14 14 38 18 57 7 18-10 21-29 11-42-7-10-22-14-36-19-14-5-23-10-21-19 2-10 15-14 27-10 12 4 19 13 22 25h6V19h-6Z"/>
+        </g>
+        <circle class="accent-dot" cx="116" cy="103" r="6.5"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="wrap">
+    <header class="topbar">
+      <p class="eyebrow mono">Marni Sai Sanjay / Identity studies</p>
+      <a href="./index.html" target="_blank" rel="noopener noreferrer">Open current portfolio &#8599;</a>
+    </header>
+    <main>
+      <div class="intro">
+        <h1>Four ways to sign your work.</h1>
+        <p>Four distinct directions, drawn as vectors. Compare the big impression, the small details, and how each mark sits in your header.</p>
+      </div>
+      <div class="tools">
+        <p>Preview only. Your current portfolio logo stays unchanged.</p>
+        <div class="toggles" role="group" aria-label="Preview appearance">
+          <button class="toggle" id="theme-toggle" type="button" aria-pressed="false">Dark theme</button>
+          <button class="toggle" id="ink-toggle" type="button" aria-pressed="false">One colour</button>
+        </div>
+      </div>
+      <noscript><p>All four concepts are visible below. Enable JavaScript to switch the header preview, theme, and colour treatment.</p></noscript>
+
+      <section class="stage" aria-label="Selected logo in a portfolio header">
+        <div class="stage-caption">
+          <h2 class="eyebrow mono">In your header</h2>
+          <p id="selection" aria-live="polite" aria-atomic="true">01 / Interlocked MS</p>
+        </div>
+        <div class="header-proof portfolio-context">
+          <a class="proof-brand" href="./index.html" target="_blank" rel="noopener noreferrer" aria-label="Open the current portfolio in a new tab">
+            <svg class="mark header-mark" aria-hidden="true" focusable="false" viewBox="0 0 144 128"><use id="header-symbol" href="#logo-interlocked"/></svg>
+            <span class="proof-name">Marni Sai Sanjay<span class="proof-role">Software engineer</span></span>
+          </a>
+          <nav class="proof-links" aria-label="Current portfolio, opens in a new tab">
+            <a href="./index.html#projects" target="_blank" rel="noopener noreferrer">Work</a>
+            <a class="secondary" href="./index.html#about" target="_blank" rel="noopener noreferrer">About</a>
+            <a class="secondary" href="./index.html#experience" target="_blank" rel="noopener noreferrer">Experience</a>
+            <a class="contact" href="./index.html#contact" target="_blank" rel="noopener noreferrer">Contact &#8599;</a>
+          </nav>
+        </div>
+      </section>
+
+      <fieldset class="concepts">
+        <legend>Choose a direction to preview</legend>
+        <label class="concept">
+          <input type="radio" name="direction" value="interlocked" aria-labelledby="interlocked-name" aria-describedby="interlocked-description" checked>
+          <span class="concept-meta"><span class="concept-number mono">01</span><span class="concept-note">Closest to your current identity</span></span>
+          <span class="art portfolio-context"><svg class="mark large-mark" viewBox="0 0 144 128" aria-hidden="true" focusable="false"><use href="#logo-interlocked"/></svg></span>
+          <span class="concept-copy">
+            <span class="concept-name" id="interlocked-name">Interlocked MS</span>
+            <span class="concept-description" id="interlocked-description">Serif initials woven into one mark. Personal and editorial, with an accent full stop.</span>
+            <span class="sizes portfolio-context" aria-label="Actual-size tests at 16, 24 and 40 pixels">
+              <span class="size"><svg class="mark" width="16" height="16" viewBox="0 0 144 128" aria-hidden="true"><use href="#logo-interlocked"/></svg><span class="size-label">16 px</span></span>
+              <span class="size"><svg class="mark" width="24" height="24" viewBox="0 0 144 128" aria-hidden="true"><use href="#logo-interlocked"/></svg><span class="size-label">24 px</span></span>
+              <span class="size"><svg class="mark" width="40" height="40" viewBox="0 0 144 128" aria-hidden="true"><use href="#logo-interlocked"/></svg><span class="size-label">40 px</span></span>
+            </span>
+          </span>
+        </label>
+
+        <label class="concept">
+          <input type="radio" name="direction" value="hidden" aria-labelledby="hidden-name" aria-describedby="hidden-description">
+          <span class="concept-meta"><span class="concept-number mono">02</span><span class="concept-note">The architectural direction</span></span>
+          <span class="art portfolio-context"><svg class="mark large-mark" viewBox="0 0 144 128" aria-hidden="true" focusable="false"><use href="#logo-hidden"/></svg></span>
+          <span class="concept-copy">
+            <span class="concept-name" id="hidden-name">Hidden-S monogram</span>
+            <span class="concept-description" id="hidden-description">A solid, geometric M with an S cut through its centre. Bold, compact, and deliberately abstract.</span>
+            <span class="sizes portfolio-context" aria-label="Actual-size tests at 16, 24 and 40 pixels">
+              <span class="size"><svg class="mark" width="16" height="16" viewBox="0 0 144 128" aria-hidden="true"><use href="#logo-hidden"/></svg><span class="size-label">16 px</span></span>
+              <span class="size"><svg class="mark" width="24" height="24" viewBox="0 0 144 128" aria-hidden="true"><use href="#logo-hidden"/></svg><span class="size-label">24 px</span></span>
+              <span class="size"><svg class="mark" width="40" height="40" viewBox="0 0 144 128" aria-hidden="true"><use href="#logo-hidden"/></svg><span class="size-label">40 px</span></span>
+            </span>
+          </span>
+        </label>
+
+        <label class="concept">
+          <input type="radio" name="direction" value="continuous" aria-labelledby="continuous-name" aria-describedby="continuous-description">
+          <span class="concept-meta"><span class="concept-number mono">03</span><span class="concept-note">Connected to your line illustrations</span></span>
+          <span class="art portfolio-context"><svg class="mark large-mark" viewBox="0 0 144 128" aria-hidden="true" focusable="false"><use href="#logo-continuous"/></svg></span>
+          <span class="concept-copy">
+            <span class="concept-name" id="continuous-name">Continuous-line MS</span>
+            <span class="concept-description" id="continuous-description">One uninterrupted, confident stroke. A quieter technical signature without code brackets or fragile hairlines.</span>
+            <span class="sizes portfolio-context" aria-label="Actual-size tests at 16, 24 and 40 pixels">
+              <span class="size"><svg class="mark" width="16" height="16" viewBox="0 0 144 128" aria-hidden="true"><use href="#logo-continuous"/></svg><span class="size-label">16 px</span></span>
+              <span class="size"><svg class="mark" width="24" height="24" viewBox="0 0 144 128" aria-hidden="true"><use href="#logo-continuous"/></svg><span class="size-label">24 px</span></span>
+              <span class="size"><svg class="mark" width="40" height="40" viewBox="0 0 144 128" aria-hidden="true"><use href="#logo-continuous"/></svg><span class="size-label">40 px</span></span>
+            </span>
+          </span>
+        </label>
+
+        <label class="concept">
+          <input type="radio" name="direction" value="signature" aria-labelledby="signature-name" aria-describedby="signature-description">
+          <span class="concept-meta"><span class="concept-number mono">04</span><span class="concept-note">The pared-back signature</span></span>
+          <span class="art portfolio-context"><svg class="mark large-mark" viewBox="0 0 144 128" aria-hidden="true" focusable="false"><use href="#logo-signature"/></svg></span>
+          <span class="concept-copy">
+            <span class="concept-name" id="signature-name">Custom S.</span>
+            <span class="concept-description" id="signature-description">A single sculpted initial with a squared terminal and a full stop. Less information, more presence.</span>
+            <span class="sizes portfolio-context" aria-label="Actual-size tests at 16, 24 and 40 pixels">
+              <span class="size"><svg class="mark" width="16" height="16" viewBox="0 0 144 128" aria-hidden="true"><use href="#logo-signature"/></svg><span class="size-label">16 px</span></span>
+              <span class="size"><svg class="mark" width="24" height="24" viewBox="0 0 144 128" aria-hidden="true"><use href="#logo-signature"/></svg><span class="size-label">24 px</span></span>
+              <span class="size"><svg class="mark" width="40" height="40" viewBox="0 0 144 128" aria-hidden="true"><use href="#logo-signature"/></svg><span class="size-label">40 px</span></span>
+            </span>
+          </span>
+        </label>
+      </fieldset>
+
+      <footer class="afterword">
+        <p><strong>Judge the small version, too.</strong> The artwork panels use your portfolio palette. Try one colour to judge the shape without the accent doing the work.</p>
+        <p class="mono">Concept study / Not applied to the live page</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const params = new URLSearchParams(location.search);
+      const options = ["interlocked", "hidden", "continuous", "signature"];
+      const radios = [...document.querySelectorAll('input[name="direction"]')];
+      const themeButton = document.getElementById("theme-toggle");
+      const inkButton = document.getElementById("ink-toggle");
+      const initial = params.get("logo");
+
+      if (options.includes(initial)) radios.find(radio => radio.value === initial).checked = true;
+      root.dataset.ink = params.get("ink") === "mono" ? "mono" : "accent";
+
+      function update() {
+        const selected = radios.find(radio => radio.checked);
+        const index = options.indexOf(selected.value);
+        const name = document.getElementById(`${selected.value}-name`).textContent;
+        document.getElementById("header-symbol").setAttribute("href", `#logo-${selected.value}`);
+        document.getElementById("selection").textContent = `0${index + 1} / ${name}`;
+        themeButton.setAttribute("aria-pressed", String(root.dataset.theme === "dark"));
+        inkButton.setAttribute("aria-pressed", String(root.dataset.ink === "mono"));
+        const url = new URL(location.href);
+        url.searchParams.set("logo", selected.value);
+        url.searchParams.set("scoutTheme", root.dataset.theme);
+        if (root.dataset.ink === "mono") url.searchParams.set("ink", "mono");
+        else url.searchParams.delete("ink");
+        history.replaceState(null, "", url);
+      }
+
+      radios.forEach(radio => radio.addEventListener("change", update));
+      themeButton.addEventListener("click", () => {
+        root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+        update();
+      });
+      inkButton.addEventListener("click", () => {
+        root.dataset.ink = root.dataset.ink === "mono" ? "accent" : "mono";
+        update();
+      });
+      update();
+    })();
+  </script>
+</body>
+</html>
