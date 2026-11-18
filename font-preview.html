@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (() => {
+      const param = new URLSearchParams(location.search).get("scoutTheme");
+      let saved;
+      try { saved = localStorage.getItem("theme"); } catch {}
+      document.documentElement.dataset.theme = ["light", "dark"].includes(param) ? param
+        : ["light", "dark"].includes(saved) ? saved
+        : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    })();
+  </script>
+  <title>Six new font directions - Sanjay</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..500&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400..600&amp;family=Fraunces:opsz,wght@9..144,400..600&amp;family=Space+Mono:wght@400&amp;display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    @font-face {
+      font-family: "Clash Display";
+      src: url("https://cdn.fontshare.com/wf/DK2FOA46SRWJ5HXWWU5TK4N4CMHYD236/FPEAXZZSH5L2K5MTJFRIWD2MC32IJMN3/THOOS4VOCKT7H2XEB27NQDYM2NYS4AAR.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 200 700;
+      font-display: swap;
+    }
+    html { scroll-padding-top: var(--header-height); }
+    .type-header { min-height: 5.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .type-header a { display: inline-flex; align-items: center; min-height: 44px; font-size: .9rem; }
+    .type-header p { color: var(--cp-text-muted); font-size: .8rem; }
+    .type-intro { padding-block: 2rem 1.5rem; }
+    .type-intro h1 { font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -.05em; line-height: 1.1; }
+    .type-intro p { max-width: 46rem; margin-top: 1rem; color: var(--cp-text-muted); }
+    .type-intro .eyebrow { margin-top: 0; }
+    .type-options { min-width: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 0; padding: 0; border: 0; }
+    .type-option { min-width: 0; }
+    .type-option label { display: flex; flex-direction: column; height: 100%; padding: 1.25rem; background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 1rem; cursor: pointer; }
+    .type-option input:checked + label { border-color: var(--cp-accent); background: var(--cp-accent-soft); }
+    .type-option input:focus-visible + label { outline: 2px solid var(--cp-accent); outline-offset: 4px; }
+    .type-option-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .75rem; font-size: .875rem; font-weight: 600; }
+    .type-selected { visibility: hidden; color: var(--cp-accent); font-size: .75rem; font-weight: 500; }
+    .type-option input:checked + label .type-selected { visibility: visible; }
+    .type-family { display: block; margin-top: .25rem; font-size: .75rem; color: var(--cp-text-muted); }
+    .type-name { display: block; margin-block: 1.25rem 1rem; font-family: var(--display-font), "Segoe UI", sans-serif; font-size: calc(clamp(3rem, 5.4vw, 5.25rem) * var(--display-scale)); font-weight: var(--display-weight); line-height: 1; letter-spacing: var(--display-track); overflow-wrap: anywhere; }
+    .type-name > span { display: block; }
+    .type-name > span:first-child { margin-bottom: .12em; font-size: .46em; font-weight: 400; line-height: 1.15; }
+    .type-name > span:last-child { color: var(--cp-accent); }
+    .type-pitch { display: block; margin-top: auto; font-family: "Satoshi", "Segoe UI", sans-serif; font-size: .9375rem; line-height: 1.6; }
+    .type-description { display: block; margin-top: 1rem; padding-top: .75rem; border-top: 1px solid var(--cp-border); font-size: .8rem; color: var(--cp-text-muted); }
+    [data-type="a"], body:has(#type-a:checked) .type-live {
+      --display-font: "Clash Display"; --display-weight: 600; --display-track: -.04em; --display-scale: 1;
+    }
+    [data-type="b"], body:has(#type-b:checked) .type-live {
+      --display-font: "Satoshi"; --display-weight: 400; --display-track: -.055em; --display-scale: 1;
+    }
+    [data-type="c"], body:has(#type-c:checked) .type-live {
+      --display-font: "Bricolage Grotesque"; --display-weight: 600; --display-track: -.045em; --display-scale: 1;
+    }
+    [data-type="d"], body:has(#type-d:checked) .type-live {
+      --display-font: "Bodoni Moda"; --display-weight: 500; --display-track: -.045em; --display-scale: 1;
+    }
+    [data-type="e"], body:has(#type-e:checked) .type-live {
+      --display-font: "Space Mono"; --display-weight: 400; --display-track: -.06em; --display-scale: .78;
+    }
+    [data-type="f"], body:has(#type-f:checked) .type-live {
+      --display-font: "Fraunces"; --display-weight: 600; --display-track: -.04em; --display-scale: 1;
+    }
+    .type-preview-link { display: inline-flex; align-items: center; min-height: 44px; gap: .5rem; margin-block: 1.25rem 3rem; color: var(--cp-accent); font-weight: 500; }
+    .type-live-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 1rem; padding-top: 2rem; border-top: 1px solid var(--cp-border); }
+    .type-live-heading h2 { font-size: 1rem; letter-spacing: -.02em; }
+    .type-live-heading a { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; color: var(--cp-accent); }
+    .type-live .hero-title { font-family: var(--display-font), "Segoe UI", sans-serif; font-size: calc(clamp(5rem, min(13.2vw, 19svh), 12rem) * var(--display-scale)); font-weight: var(--display-weight); letter-spacing: var(--display-track); }
+    .type-live .hero-title > span:first-child { font-weight: 400; letter-spacing: var(--display-track); }
+    .type-live .hero-cta { min-height: 44px; color: var(--cp-accent); }
+    .type-footer { padding-block: 1.5rem 2.5rem; border-top: 1px solid var(--cp-border); color: var(--cp-text-muted); font-size: .8rem; }
+    @media (max-width: 1000px) {
+      .type-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .type-option label { padding: 1rem; }
+      .type-option-top { align-items: start; flex-direction: column; gap: .25rem; }
+    }
+    @media (max-width: 767px) {
+      .type-header { min-height: 5rem; }
+      .type-header p { max-width: 8rem; text-align: right; }
+      .type-options { grid-template-columns: 1fr; }
+      .type-option label { padding: 1.5rem; }
+      .type-option-top { flex-direction: row; }
+      .type-name { margin-block: 1.5rem; font-size: calc(clamp(3.75rem, 18vw, 6rem) * var(--display-scale)); }
+      .type-live .hero-title { font-size: calc(clamp(3.25rem, 16.5vw, 5rem) * var(--display-scale)); }
+      .type-preview-link { margin-bottom: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#font-options">Skip to font samples</a>
+  <header class="site-header">
+    <div class="shell type-header">
+      <a href="./index.html" target="_blank" rel="noopener noreferrer">Back to portfolio</a>
+      <p>C1 colors. Same photo. Type only.</p>
+    </div>
+  </header>
+  <main>
+    <div class="shell">
+      <div class="type-intro">
+        <p class="eyebrow">Font comparison</p>
+        <h1>A fresh set. Six different directions.</h1>
+        <p>All six name fonts are new. The intro uses Satoshi throughout, so you can compare the names fairly. Select a sample for the full-size view below.</p>
+      </div>
+      <fieldset class="type-options" id="font-options">
+        <legend class="sr-only">Choose a font direction to preview</legend>
+        <div class="type-option" data-type="a">
+          <input class="sr-only" type="radio" name="type" id="type-a" value="a" checked aria-labelledby="label-a" aria-describedby="description-a">
+          <label for="type-a">
+            <span class="type-option-top"><span id="label-a">A / Sharp</span><span class="type-selected" aria-hidden="true">Previewing</span></span>
+            <span class="type-family">Clash Display + Satoshi</span>
+            <span class="type-name" aria-hidden="true"><span>Marni Sai</span><span>Sanjay.</span></span>
+            <span class="type-pitch" aria-hidden="true">Building services, mobile apps, and AI tools at <strong>Microsoft.</strong></span>
+            <span class="type-description" id="description-a">Defined shapes and a stronger display presence.</span>
+          </label>
+        </div>
+        <div class="type-option" data-type="b">
+          <input class="sr-only" type="radio" name="type" id="type-b" value="b" aria-labelledby="label-b" aria-describedby="description-b">
+          <label for="type-b">
+            <span class="type-option-top"><span id="label-b">B / Minimal</span><span class="type-selected" aria-hidden="true">Previewing</span></span>
+            <span class="type-family">Satoshi for name and intro</span>
+            <span class="type-name" aria-hidden="true"><span>Marni Sai</span><span>Sanjay.</span></span>
+            <span class="type-pitch" aria-hidden="true">Building services, mobile apps, and AI tools at <strong>Microsoft.</strong></span>
+            <span class="type-description" id="description-b">Lighter weight, simpler forms and a quieter name.</span>
+          </label>
+        </div>
+        <div class="type-option" data-type="c">
+          <input class="sr-only" type="radio" name="type" id="type-c" value="c" aria-labelledby="label-c" aria-describedby="description-c">
+          <label for="type-c">
+            <span class="type-option-top"><span id="label-c">C / Character</span><span class="type-selected" aria-hidden="true">Previewing</span></span>
+            <span class="type-family">Bricolage Grotesque + Satoshi</span>
+            <span class="type-name" aria-hidden="true"><span>Marni Sai</span><span>Sanjay.</span></span>
+            <span class="type-pitch" aria-hidden="true">Building services, mobile apps, and AI tools at <strong>Microsoft.</strong></span>
+            <span class="type-description" id="description-c">Broad, expressive letters with more personality.</span>
+          </label>
+        </div>
+        <div class="type-option" data-type="d">
+          <input class="sr-only" type="radio" name="type" id="type-d" value="d" aria-labelledby="label-d" aria-describedby="description-d">
+          <label for="type-d">
+            <span class="type-option-top"><span id="label-d">D / Classic</span><span class="type-selected" aria-hidden="true">Previewing</span></span>
+            <span class="type-family">Bodoni Moda + Satoshi</span>
+            <span class="type-name" aria-hidden="true"><span>Marni Sai</span><span>Sanjay.</span></span>
+            <span class="type-pitch" aria-hidden="true">Building services, mobile apps, and AI tools at <strong>Microsoft.</strong></span>
+            <span class="type-description" id="description-d">Upright, high-contrast serifs. No cursive or italics.</span>
+          </label>
+        </div>
+        <div class="type-option" data-type="e">
+          <input class="sr-only" type="radio" name="type" id="type-e" value="e" aria-labelledby="label-e" aria-describedby="description-e">
+          <label for="type-e">
+            <span class="type-option-top"><span id="label-e">E / Technical</span><span class="type-selected" aria-hidden="true">Previewing</span></span>
+            <span class="type-family">Space Mono + Satoshi</span>
+            <span class="type-name" aria-hidden="true"><span>Marni Sai</span><span>Sanjay.</span></span>
+            <span class="type-pitch" aria-hidden="true">Building services, mobile apps, and AI tools at <strong>Microsoft.</strong></span>
+            <span class="type-description" id="description-e">Monospaced lettering with an engineering character.</span>
+          </label>
+        </div>
+        <div class="type-option" data-type="f">
+          <input class="sr-only" type="radio" name="type" id="type-f" value="f" aria-labelledby="label-f" aria-describedby="description-f">
+          <label for="type-f">
+            <span class="type-option-top"><span id="label-f">F / Soft serif</span><span class="type-selected" aria-hidden="true">Previewing</span></span>
+            <span class="type-family">Fraunces + Satoshi</span>
+            <span class="type-name" aria-hidden="true"><span>Marni Sai</span><span>Sanjay.</span></span>
+            <span class="type-pitch" aria-hidden="true">Building services, mobile apps, and AI tools at <strong>Microsoft.</strong></span>
+            <span class="type-description" id="description-f">Fuller, softer serifs with a more relaxed feel.</span>
+          </label>
+        </div>
+      </fieldset>
+      <a class="type-preview-link" href="#type-live">See selected font at full size <span aria-hidden="true">&darr;</span></a>
+      <div class="type-live-heading">
+        <h2>In your opening layout</h2>
+        <a href="#font-options">Back to samples <span aria-hidden="true">&uarr;</span></a>
+      </div>
+    </div>
+    <section class="hero type-live" id="type-live" aria-label="Full-size first-page font preview">
+      <div class="hero-pin">
+        <div class="shell hero-inner">
+          <div class="hero-stage">
+            <div class="hero-copy">
+              <p class="hero-kicker"><span class="status-dot" aria-hidden="true"></span>Software engineer</p>
+              <h3 class="hero-title"><span>Marni Sai</span><span>Sanjay<span class="accent">.</span></span></h3>
+              <p class="hero-description"><span class="hero-lead">Building services, mobile apps, and AI tools at <strong>Microsoft.</strong></span><span class="hero-note">Microsoft 365 at scale. Creator of AppPilot.</span></p>
+            </div>
+            <figure class="hero-portrait">
+              <div class="portrait-frame"><img src="portrait.webp" alt="Marni Sai Sanjay" width="800" height="1000"></div>
+            </figure>
+          </div>
+          <div class="hero-foot">
+            <p><span>Based in</span>Hyderabad, India</p>
+            <p><span>Computer Science &middot; Class of 2024</span>IIT (ISM), Dhanbad</p>
+            <a class="hero-cta" href="./index.html#projects" target="_blank" rel="noopener noreferrer">Selected work <span aria-hidden="true">&nearr;</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="shell type-footer">Comparison only. Your main portfolio, portrait and scroll animations are unchanged.</footer>
+</body>
+</html>
