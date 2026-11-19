@@ -149,7 +149,7 @@ Manage vendor payments through a controlled lifecycle, with atomic status transi
 
 **Heading**
 
-I like understanding how things work. Then building them.
+Curious by nature. An engineer by choice.
 
 **Body**
 
